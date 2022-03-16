@@ -40,9 +40,8 @@
     "test": "mocha -r ts-node/register test/*.test.ts"
   },
   "sideEffects": false,
-  "tarballHash": "0xffcf139ec01d3c95ed1f8b9274398ce62c61e6db410ae30d23609c7227d94992",
   "types": "./lib/index.d.ts",
-  "version": "5.6.0",
+  "version": "0.1.0",
   "devDependencies": {
     "@ethersproject/constants": "^5.6.0",
     "@ethersproject/units": "^5.6.0",
