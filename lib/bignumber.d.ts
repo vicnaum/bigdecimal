@@ -1,5 +1,4 @@
 import { Bytes, Hexable } from "@ethersproject/bytes";
-export declare const _constructorGuard: {};
 export declare type BigNumberish = BigNumber | Bytes | bigint | string | number;
 export declare function isBigNumberish(value: any): value is BigNumberish;
 export declare class BigNumber implements Hexable {
@@ -35,7 +34,6 @@ export declare class BigNumber implements Hexable {
     toJSON(key?: string): any;
     static from(value: any): BigNumber;
     static isBigNumber(value: any): value is BigNumber;
-    static constructorGuard(): {};
 }
 export declare function _base36To16(value: string): string;
 export declare function _base16To36(value: string): string;
