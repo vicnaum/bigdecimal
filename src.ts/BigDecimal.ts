@@ -1,4 +1,5 @@
 import { BigNumber, BigNumberish } from './bignumber';
+import { parseFixed } from './fixednumber';
 
 // This library is supposed to help with Ethereum units conversion
 // It is an extension (wrapper) of the BigNumber, with some decimals logic involved
@@ -17,11 +18,16 @@ export class BigDecimal extends BigNumber {
 
   // BigDecimal accepts any BigNumber | string | number as an argument
   // and the number of decimals (default = 18).
-  // If the argument is BigNumber or string - decimals are assigned to it
+  // If the argument is BigNumber - decimals are assigned to it:
   //    e.g. BN(1 000 000) with 6 decimals becomes a value of 1.0
+  // If the argument is string - there are two options, depending on parseString:
+  //    1) parseString = false: decimals are either assigned to it
+  //    e.g. BigDecimal("1000000", 6) is BN("1000000") with value of 1.0
+  //    2) parseString = true: string is parsed and converted to bignumber with decimals specified.
+  //    e.g. BigDecimal("1.5", 6) becomes BN("1500000") with value of 1.5
   // If the argument is a number - it is converted to BigNumber with specified number of decimals
   //    e.g. 1.0 as a number with 6 decimals becomes BN(1 000 000)
-  constructor(value: BigNumberish, decimals: number = 18) {
+  constructor(value: BigNumberish, decimals: number = 18, parseString: boolean = false) {
     switch (typeof value) {
       case 'object':
         super({}, value instanceof BigNumber ? value.toHexString() : BigNumber.from(value).toHexString());
@@ -29,12 +35,18 @@ export class BigDecimal extends BigNumber {
         this.value = parseFloat(this.toString()) / Math.pow(10, decimals);
         break;
       case 'string':
-        super({}, BigNumber.from(value).toHexString());
-        this.decimals = decimals;
-        this.value = parseFloat(this.toString()) / Math.pow(10, decimals);
+        if (parseString) {
+          super({}, parseFixed(value, decimals).toHexString());
+          this.decimals = decimals;
+          this.value = parseFloat(value);
+        } else {
+          super({}, BigNumber.from(value).toHexString());
+          this.decimals = decimals;
+          this.value = parseFloat(this.toString()) / Math.pow(10, decimals);
+        }
         break;
       case 'number':
-        super({}, BigNumber.from((value * Math.pow(10, decimals)).toFixed(0)).toHexString());
+        super({}, parseFixed(value.toLocaleString('fullwide', { useGrouping: false, maximumSignificantDigits: 21}), decimals).toHexString());
         this.decimals = decimals;
         this.value = value;
         break;

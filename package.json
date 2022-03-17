@@ -1,12 +1,5 @@
 {
   "author": "Victor Naumik <vicnaum@gmail.com>, Richard Moore <me@ricmoo.com>",
-  "dependencies": {
-    "@ethersproject/bytes": "^5.6.0",
-    "@ethersproject/logger": "^5.6.0",
-    "bn.js": "^4.11.9",
-    "mocha": "^9.2.2",
-    "typescript": "^4.6.2"
-  },
   "description": "BigDecimal library based on BigNumber from ethers.js.",
   "ethereum": "donations.ethers.eth",
   "funding": [
@@ -41,12 +34,19 @@
   },
   "sideEffects": false,
   "types": "./lib/index.d.ts",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "devDependencies": {
     "@ethersproject/constants": "^5.6.0",
     "@ethersproject/units": "^5.6.0",
     "@types/bn.js": "^5.1.0",
     "@types/mocha": "^9.1.0",
     "ts-node": "^10.7.0"
+  },
+  "dependencies": {
+    "@ethersproject/bytes": "^5.6.0",
+    "@ethersproject/logger": "^5.6.0",
+    "bn.js": "^4.11.9",
+    "mocha": "^9.2.2",
+    "typescript": "^4.6.2"
   }
 }

@@ -21,15 +21,24 @@ For now it only supports multiplication, division, addition and subtraction.
 
 ```javascript
 // You can create BigDecimal with Number, with string, or with BigNumber.
-// You can pass the number of decimals as the second argument. If nothing is passed - default is 18
+// You can pass the number of decimals as the second argument. If nothing is passed - default is assumed to be 18
 
+// When creating BigDecimal from a number - it is converted to 18 decimals and stored as a BigNumber with 18 zeroes
 const fiveEthers = new BigDecimal(5) // Same as BigNumber.from(5 with 18 zeroes) or parseEther(5)
 
-const hundredUSDC = new BigDecimal("100", 6) // Same as BigNumber.from(100 with 6 zeroes) or parseUnits(100, 6)
+// When creating with a BigNumber - it's assumed that decimals are already included:
+const hundredUSDC = new BigDecimal(BigNumber.from("100000000"), 6) // Same as parseUnits(100, 6)
+
+// When creating with a string - there are two ways:
+// 1) same as BigNumber, where the decimals are assumed to be included:
+const hundredUSDC = new BigDecimal("100000000", 6) // Same as parseUnits(100, 6)
+
+// 1) set parseString to true - then the string will be parsed and treated as a number:
+const hundredUSDC = new BigDecimal("100", 6, true) // Same as parseUnits("100", 6)
 
 const meaning = new BigDecimal(BigNumber.from(42), 0) // 42 with 0 decimals
 
-const half = hundredUSDC.mul(0.5) // equals 50 USDC with 6 decimals
+const half = hundredUSDC.mul(0.5) // equals hundredUSDC * 0.5 = 50 USDC with 6 decimals
 
 const fivePercent = new Bigdecimal(0.05) // equals 0.05 * 1e18
 

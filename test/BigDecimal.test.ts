@@ -23,9 +23,27 @@ describe("BigDecimal test", () => {
       const bd = new BigDecimal(value);
       console.log(bd);
     });
-  
+
+    it("String (parseString = true)", () => {
+      const value = "1500600.123456";
+      const bd = new BigDecimal(value, 6, true);
+      console.log(bd);
+    });
+
     it("Number", () => {
       const value = 10;
+      const bd = new BigDecimal(value);
+      console.log(bd);
+    });
+
+    it("Large Number", () => {
+      const value = 1000000000;
+      const bd = new BigDecimal(value);
+      console.log(bd);
+    });
+
+    it("Fractional Number", () => {
+      const value = 0.012345;
       const bd = new BigDecimal(value);
       console.log(bd);
     });
@@ -57,7 +75,7 @@ describe("BigDecimal test", () => {
     });
   });
 
-  describe.only("Multiplication tests", () => {
+  describe("Multiplication tests", () => {
     it("Same decimals (18 and 18)", () => {
       const a = new BigDecimal(10);
       const b = new BigDecimal(2);
