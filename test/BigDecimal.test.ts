@@ -75,6 +75,26 @@ describe("BigDecimal test", () => {
     });
   });
 
+  describe("setDecimals tests", () => {
+    it("From 18 to 6 decimals", () => {
+      const a = new BigDecimal(100);
+      const result = a.setDecimals(6);
+      console.log(result);
+    });
+
+    it("From 6 to 18 decimals", () => {
+      const a = new BigDecimal(100, 6);
+      const result = a.setDecimals(18);
+      console.log(result);
+    });
+
+    it("From 6 to 6 decimals", () => {
+      const a = new BigDecimal(100, 6);
+      const result = a.setDecimals(6);
+      console.log(result);
+    });
+  });
+
   describe("Multiplication tests", () => {
     it("Same decimals (18 and 18)", () => {
       const a = new BigDecimal(10);

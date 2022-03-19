@@ -112,7 +112,7 @@ export class BigDecimal extends BigNumber {
   // (but rawValue changes to correspond to new decimals)
   //    e.g. 1d6.toDecimals(18) becomes 1d18
   toDecimals(newDecimals: number = 18): BigDecimal {
-    if (newDecimals == this.decimals) return new BigDecimal(this, this.decimals);
+    if (newDecimals == this.decimals) return this;
     if (newDecimals > this.decimals) {
       const decimalsDiff = newDecimals - this.decimals;
       const result_BN = super.mul(BigNumber.from(10).pow(decimalsDiff));
@@ -122,5 +122,13 @@ export class BigDecimal extends BigNumber {
       const result_BN = super.div(BigNumber.from(10).pow(decimalsDiff));
       return new BigDecimal(result_BN, newDecimals);
     }
+  }
+
+  // Converts decimals, retaining the value
+  // (but rawValue changes to correspond to new decimals)
+  //    e.g. 1d6.toDecimals(18) becomes 1d18
+  setDecimals(newDecimals: number = 18): BigDecimal {
+    if (newDecimals == this.decimals) return this;
+    return new BigDecimal(this, newDecimals);
   }
 }

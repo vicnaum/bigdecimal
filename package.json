@@ -30,7 +30,8 @@
     "url": "git://github.com/vicnaum/bigdecimal.git"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register test/*.test.ts"
+    "test": "mocha -r ts-node/register test/*.test.ts",
+    "build": "tsc"
   },
   "sideEffects": false,
   "types": "./lib/index.d.ts",

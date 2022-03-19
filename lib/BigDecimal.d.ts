@@ -8,5 +8,6 @@ export declare class BigDecimal extends BigNumber {
     add(b: BigDecimal | BigNumberish, b_decimals?: number): BigDecimal;
     sub(b: BigDecimal | BigNumberish, b_decimals?: number): BigDecimal;
     toDecimals(newDecimals?: number): BigDecimal;
+    setDecimals(newDecimals?: number): BigDecimal;
 }
 //# sourceMappingURL=BigDecimal.d.ts.map
