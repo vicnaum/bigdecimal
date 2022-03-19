@@ -7,6 +7,7 @@ export declare class BigDecimal extends BigNumber {
     div(b: BigDecimal | BigNumberish, b_decimals?: number): BigDecimal;
     add(b: BigDecimal | BigNumberish, b_decimals?: number): BigDecimal;
     sub(b: BigDecimal | BigNumberish, b_decimals?: number): BigDecimal;
+    abs(): BigDecimal;
     toDecimals(newDecimals?: number): BigDecimal;
     setDecimals(newDecimals?: number): BigDecimal;
 }
