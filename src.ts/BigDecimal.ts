@@ -109,7 +109,7 @@ export class BigDecimal extends BigNumber {
   }
 
   abs(): BigDecimal {
-    return this.isNegative() ? new BigDecimal(this.mul(-1)) : this
+    return this.isNegative() ? this.mul(-1) : this
   }
 
   // Converts decimals, retaining the value

@@ -325,5 +325,16 @@ describe("BigDecimal test", () => {
       const result = a.abs();
       console.log(result);
     });
+    it("abs of negative 6 dec", () => {
+      const a = new BigDecimal(-10, 6);
+      const result = a.abs();
+      console.log(result);
+    });
+    it("abs of positive 6 dec", () => {
+      const a = new BigDecimal(10, 6);
+      const result = a.abs();
+      console.log(result);
+    });
+
   })
 });
