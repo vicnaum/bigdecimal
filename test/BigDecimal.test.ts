@@ -313,4 +313,17 @@ describe("BigDecimal test", () => {
       }
     });
   });
+
+  describe("abs tests", () => {
+    it("abs of negative", () => {
+      const a = new BigDecimal(-10);
+      const result = a.abs();
+      console.log(result);
+    });
+    it("abs of positive", () => {
+      const a = new BigDecimal(10);
+      const result = a.abs();
+      console.log(result);
+    });
+  })
 });

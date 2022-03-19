@@ -108,6 +108,10 @@ export class BigDecimal extends BigNumber {
     return new BigDecimal(result_BN, this.decimals);
   }
 
+  abs(): BigDecimal {
+    return this.isNegative() ? new BigDecimal(this.mul(-1)) : this
+  }
+
   // Converts decimals, retaining the value
   // (but rawValue changes to correspond to new decimals)
   //    e.g. 1d6.toDecimals(18) becomes 1d18
