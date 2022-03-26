@@ -46,7 +46,7 @@ export class BigDecimal extends BigNumber {
         }
         break;
       case 'number':
-        super({}, parseFixed(value.toLocaleString('fullwide', { useGrouping: false, maximumSignificantDigits: 21}), decimals).toHexString());
+        super({}, parseFixed(value.toLocaleString('en-US', { useGrouping: false, maximumSignificantDigits: 21}), decimals).toHexString());
         this.decimals = decimals;
         this.value = value;
         break;
